@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/docs', function() {
+    View::addExtension('html', 'php'); // allows .html
+    return view('docs.index'); // loads /public/docs/index.html
+});
 
 Route::get('/', function () {
     return view('welcome');
