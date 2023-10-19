@@ -77,9 +77,13 @@ body {
     color: #343a40;
 }
 
-.bg-purple { background-color: #6f42c1; }
+.icon {
+    width: 1em;
+    height: 1em;
+    font-size: 16px;
+    vertical-align: -0.2em;
 
-.lh-100 { line-height: 1; }
-.lh-125 { line-height: 1.25; }
-.lh-150 { line-height: 1.5; }
-
+    &:hover {
+        text-decoration: none;
+    }
+}

@@ -35,7 +35,7 @@
                 @if (Route::has('login'))
                     <li class="nav-item ">
                         <a class="nav-link {{ active('register') }}" href="{{ url('register') }}">
-                            {{ __('Register') }}
+                            <x-heroicon-o-user-plus class="icon text-warning mr-1"/> {{ __('Register') }}
                         </a>
                     </li>
                 @endif
@@ -43,7 +43,7 @@
                 @if (Route::has('login'))
                     <li class="nav-item ">
                         <a class="nav-link {{ active('login') }}" href="{{ url('login') }}">
-                            {{ __('Login') }}
+                            <x-heroicon-o-arrow-right-on-rectangle class="icon text-warning mr-1"/> {{ __('Login') }}
                         </a>
                     </li>
                 @endif
