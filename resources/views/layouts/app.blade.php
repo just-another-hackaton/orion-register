@@ -25,17 +25,26 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">{{ config('app.name', 'Laravel') }}</a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="#">
+            <x-heroicon-o-cube-transparent class="icon-brand mr-2"/> {{ config('app.name', 'Laravel') }}
+        </a>
+
         <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        @env(['local', 'testing'])
+            <span class="navbar-text text-danger mr-auto ml-4">
+                <x-heroicon-o-exclamation-triangle class="icon mr-2" /> {{ __('The application is running in an local environment') }}
+            </span>
+        @endenv
 
         @guest
             <ul class="navbar-nav ml-auto">
                 @if (Route::has('login'))
                     <li class="nav-item ">
                         <a class="nav-link {{ active('register') }}" href="{{ url('register') }}">
-                            <x-heroicon-o-user-plus class="icon text-warning mr-1"/> {{ __('Register') }}
+                            <x-heroicon-o-user-plus class="icon icon-navbar mr-1"/> {{ __('Register') }}
                         </a>
                     </li>
                 @endif
@@ -43,7 +52,7 @@
                 @if (Route::has('login'))
                     <li class="nav-item ">
                         <a class="nav-link {{ active('login') }}" href="{{ url('login') }}">
-                            <x-heroicon-o-arrow-right-on-rectangle class="icon text-warning mr-1"/> {{ __('Login') }}
+                            <x-heroicon-o-arrow-right-on-rectangle class="icon icon-navbar mr-1"/> {{ __('Login') }}
                         </a>
                     </li>
                 @endif
