@@ -21,6 +21,7 @@
 
     <!-- Styles -->
     @vite(['resources/js/app.js', 'resources/scss/app.scss'])
+    @livewireStyles
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
@@ -28,6 +29,27 @@
         <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+        @guest
+            <ul class="navbar-nav ml-auto">
+                @if (Route::has('login'))
+                    <li class="nav-item ">
+                        <a class="nav-link {{ active('register') }}" href="{{ url('register') }}">
+                            {{ __('Register') }}
+                        </a>
+                    </li>
+                @endif
+
+                @if (Route::has('login'))
+                    <li class="nav-item ">
+                        <a class="nav-link {{ active('login') }}" href="{{ url('login') }}">
+                            {{ __('Login') }}
+                        </a>
+                    </li>
+                @endif
+            </ul>
+        @else {{-- The user is currently authenticated --}}
+        @endguest
     </nav>
 
     @auth('web')
@@ -41,5 +63,7 @@
     <main role="main">
         @yield('content')
     </main>
+
+    @livewireScripts
 </body>
 </html>
