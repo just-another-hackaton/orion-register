@@ -1,3 +1,22 @@
+import $ from "jquery";
+import bootstrap from "bootstrap";
+import _ from 'lodash';
+import Popper from "popper.js";
+window._ = _;
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+    window.Popper = Popper.default; // Not sure about the .default thingy.
+    window.$ = window.jQuery = $;
+
+    bootstrap;
+} catch (e) {}
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
