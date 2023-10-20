@@ -1,12 +1,45 @@
-// Fonts
+/// --------------------------------------------------------------------------------------------------------------------------
+/// Configuration and helpers
+/// --------------------------------------------------------------------------------------------------------------------------
+///
+/// The 'abstracts' folder gathers all Sass tools and helpers used accross the project.
+/// Every global variable, function, mixin and placeholder should be put here.
+///
+/// The rule of thumb for this folder is that it should not output a single line of CSS when compiled on its own.
+/// These are nothing but Sass helpers.
+///
+/// @see https://sass-guidelin.es/#abstracts-folder
+///
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import 'abstracts/variables';
 
-// Variables
-@import 'variables';
-
-// Bootstrap
+/// --------------------------------------------------------------------------------------------------------------------------
+/// Vendors
+/// --------------------------------------------------------------------------------------------------------------------------
+///
+/// Most projects will have a 'vendors' folder containing all the CSS files from external libraries and frameworks.
+/// Putting those aside in the same folder is a good way to say "Hey, tis is not from me, not my code, not my responsibility."
+///
+/// If you have to override a section of any vendor, I recommend you have an 8th folder colled 'vendor-extensions'
+/// in which you have files named exactly after the vendors they overwrite. For instance, 'vendor-extendsions/_bootstrap.scss'
+/// is a file containing all CSS riles to intended to re-declare some of Bootstrap's default CSS.
+/// This is to avoid editing the vendor files themselves, which is not generally not a good idea.
+///
+/// @see https://sass-guidelin.es/#vendors-folder
+///
 @import 'bootstrap/scss/bootstrap';
 
+/// --------------------------------------------------------------------------------------------------------------------------
+/// Layout-related sections
+/// --------------------------------------------------------------------------------------------------------------------------
+///
+/// The 'layout' folder contains everything that takes part in laying out the site or application.
+/// This foilder could have stylesheets for the main parts of the site (header, footer, navigation, sidebar...),
+/// the grid system or even CSS styles for all the froms.
+///
+/// @see https://sass-guidelin.es/#layout-folder
+///
+@import 'layout/page-headers';
 
 html,
 body {
