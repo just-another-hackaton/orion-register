@@ -22,7 +22,7 @@
 ///
 /// If you have to override a section of any vendor, I recommend you have an 8th folder colled 'vendor-extensions'
 /// in which you have files named exactly after the vendors they overwrite. For instance, 'vendor-extendsions/_bootstrap.scss'
-/// is a file containing all CSS riles to intended to re-declare some of Bootstrap's default CSS.
+/// is a file containing all CSS rules to intended to re-declare some of Bootstrap's default CSS.
 /// This is to avoid editing the vendor files themselves, which is not generally not a good idea.
 ///
 /// @see https://sass-guidelin.es/#vendors-folder
