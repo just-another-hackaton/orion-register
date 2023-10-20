@@ -13,6 +13,17 @@ body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
+.btn-submit {
+    @include button-variant(rgb(139, 126, 200), darken(rgb(139, 126, 200), 10%));
+}
+
+.card-header-logins {
+    background-color: #fef2f2;
+    font-weight: bold;
+    color: #dc2626;
+    border-bottom: 0;
+}
+
 body {
     padding-top: 56px;
 }
@@ -68,6 +79,11 @@ body {
     color: #6c757d;
 }
 
+.icon-subnav {
+    margin-right: 0.25rem !important;
+    color: #3AA99F;
+}
+
 .nav-underline .nav-link:hover {
     color: #007bff;
 }
@@ -98,7 +114,7 @@ body {
 
     /// The class that is responsible for given the icons in the main navbar the needed color
     &.icon-navbar {
-        color: lighten(#D0A215, 10%);
+        color: #D0A215;
     }
 
     &:hover {
