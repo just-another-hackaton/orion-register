@@ -39,8 +39,8 @@
             </span>
         @endenv
 
-        @guest
-            <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
+            @guest
                 @if (Route::has('login'))
                     <li class="nav-item ">
                         <a class="nav-link {{ active('register') }}" href="{{ url('register') }}">
@@ -56,15 +56,48 @@
                         </a>
                     </li>
                 @endif
-            </ul>
-        @else {{-- The user is currently authenticated --}}
-        @endguest
+            @else {{-- The user is currently authenticated --}}
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf {{-- Form field protection --}}
+                </form>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <x-heroicon-o-user-circle class="icon icon-navbar mr-1"/> {{ auth()->user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="accountDropdown">
+                        <div class="dropdown-header">{{ __('Account management') }}</div>
+
+                        <a class="dropdown-item" href="">
+                            <x-heroicon-o-adjustments-vertical class="icon icon-subnav"/> {{ __('Settings') }}
+                        </a>
+
+                        <a class="dropdown-item" href="">
+                            <x-heroicon-o-book-open class="icon icon-subnav"/> {{ __('Documentation') }}
+                        </a>
+
+                        <a class="dropdown-item" href="">
+                            <x-heroicon-o-lifebuoy class="icon icon-subnav"/> {{ __('Support') }}
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <x-heroicon-o-power class="icon text-danger mr-1"/> {{ __('Logout') }}
+                        </a>
+                    </div>
+                </li>
+            @endguest
+        </ul>
     </nav>
 
     @auth('web')
         <div class="nav-scroller bg-white shadow-sm">
             <nav class="nav nav-underline">
-                <a class="nav-link active" href="#">Dashboard</a>
+                <a class="nav-link {{ active('/') }}" href="{{ url('/') }}">
+                    <x-heroicon-o-home class="icon icon-subnav" /> {{ __('Dashboard') }}
+                </a>
             </nav>
         </div>
     @endauth
