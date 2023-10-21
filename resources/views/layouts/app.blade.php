@@ -48,7 +48,7 @@
         <ul class="navbar-nav ml-auto">
             @guest
                 @if (Route::has('login'))
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link {{ active('register') }}" href="{{ url('register') }}">
                             <x-heroicon-o-user-plus class="icon icon-navbar mr-1"/> {{ __('Register') }}
                         </a>
@@ -74,7 +74,7 @@
                         </a>
 
                         <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="portalDropdown">
-                            <a class="dropdown-item" href="{{ route('kiosk.dashboard') }}">
+                            <a class="dropdown-item" href="{{ route('welcome') }}">
                                 <x-heroicon-o-globe-europe-africa class="icon icon-subnav"/> {{ __('Website') }}
                             </a>
 
