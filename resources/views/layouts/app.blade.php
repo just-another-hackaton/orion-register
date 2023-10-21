@@ -23,10 +23,16 @@
     @vite(['resources/js/app.js', 'resources/scss/app.scss'])
     @livewireStyles
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<body class="h-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand mr-auto mr-lg-0" href="#">
             <x-heroicon-o-cube-transparent class="icon-brand mr-2"/> {{ config('app.name', 'Laravel') }}
+
+            @if ($portal === 'kiosk')
+                - {{ __('Kiosk') }}
+            @elseif ($portal === 'research')
+                - {{ __('Research portal') }}
+            @endif
         </a>
 
         <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -42,7 +48,7 @@
         <ul class="navbar-nav ml-auto">
             @guest
                 @if (Route::has('login'))
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link {{ active('register') }}" href="{{ url('register') }}">
                             <x-heroicon-o-user-plus class="icon icon-navbar mr-1"/> {{ __('Register') }}
                         </a>
@@ -61,15 +67,37 @@
                     @csrf {{-- Form field protection --}}
                 </form>
 
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <x-heroicon-o-arrows-right-left class="icon icon-navbar mr-1"/> {{ __('switch to kiosk') }}
-                    </a>
-                </li>
+                @if (auth()->user()->can('access-kiosk') || auth()->user()->can('access-research-portal'))
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="portalDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <x-heroicon-o-arrows-right-left class="icon icon-navbar mr-1"/> {{ __('switch portal') }}
+                        </a>
+
+                        <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="portalDropdown">
+                            <a class="dropdown-item" href="{{ route('welcome') }}">
+                                <x-heroicon-o-globe-europe-africa class="icon icon-subnav"/> {{ __('Website') }}
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            @can('access-kiosk')
+                                <a class="dropdown-item" href="{{ route('kiosk.dashboard') }}">
+                                    <x-heroicon-o-wrench-screwdriver class="icon icon-subnav"/> {{ __('Kiosk portal') }}
+                                </a>
+                            @endcan
+
+                            @can ('access-research-portal')
+                                <a class="dropdown-item" href="{{ route('research-portal.dashboard') }}">
+                                    <x-heroicon-o-document-magnifying-glass class="icon icon-subnav" /> {{ __('Research portal') }}
+                                </a>
+                            @endcan
+                        </div>
+                    </li>
+                @endif
 
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <x-heroicon-o-user-circle class="icon icon-navbar mr-1"/> {{ auth()->user()->name }}
+                        <x-heroicon-o-user-circle class="icon icon-navbar mr-2"/> {{ auth()->user()->name }}
                     </a>
 
                     <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="accountDropdown">
@@ -98,43 +126,15 @@
         </ul>
     </nav>
 
-    @auth('web')
+
+    @auth
         <div class="nav-scroller bg-white shadow-sm">
-            <nav class="nav nav-underline">
-                <a class="nav-link {{ active('/') }}" href="{{ url('/') }}">
-                    <x-heroicon-o-home class="icon icon-subnav" /> {{ __('Dashboard') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-users class="icon icon-subnav" /> {{ __('Casualties') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-users class="icon icon-subnav" /> {{ __('Squadrons') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-users class="icon icon-subnav" /> {{ __('Airforces') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-paper-airplane class="icon icon-subnav"/> {{ __('Airframes') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-circle-stack class="icon icon-subnav"/> {{ __('Incidents') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-list-bullet class="icon icon-subnav" /> {{ __('Memorials') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-list-bullet class="icon icon-subnav" /> {{ __('Decorations') }}
-                </a>
-            </nav>
+            @includeWhen($portal === 'website', 'layouts.partials._website-subnav')
+            @includeWhen($portal === 'kiosk', 'layouts.partials._kiosk-subnav')
+            @includeWhen($portal === 'research', 'layouts.partials._research-portal-subnav')
         </div>
     @endauth
+
 
     <main role="main">
         @yield('content')

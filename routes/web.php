@@ -18,7 +18,3 @@ Route::get('/docs', function() {
     View::addExtension('html', 'php'); // allows .html
     return view('docs.index'); // loads /public/docs/index.html
 });
-
-Route::get('/', function () {
-    return view('welcome');
-});
