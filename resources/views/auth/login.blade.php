@@ -85,7 +85,7 @@
                                         class="btn btn-link p-0"
                                         label="{{ __('Authenticate as researcher') }}"
                                         :user-attributes="['user_group' => \App\Enums\Users\UserGroup::Researcher->value]"
-                                        email="webmaster@domain.tld"
+                                        email="researcher@domain.tld"
                                     />
                                 </li>
                                 <li>

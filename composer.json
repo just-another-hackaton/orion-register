@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.0",
         "spatie/laravel-login-link": "^1.1",
+        "spatie/laravel-route-attributes": "^1.19",
         "watson/active": "^7.0"
     },
     "require-dev": {
