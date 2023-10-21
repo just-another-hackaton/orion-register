@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+use App\Enums\Users\UserGroup;
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -21,6 +24,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('access-kiosk', function (User $user): bool {
+            return $user->user_group === UserGroup::Researcher
+                || $user->user_group === UserGroup::Administrator
+                || $user->user_group === UserGroup::Webmaster;
+        });
     }
 }

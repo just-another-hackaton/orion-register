@@ -23,10 +23,10 @@
     @vite(['resources/js/app.js', 'resources/scss/app.scss'])
     @livewireStyles
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<body class="h-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand mr-auto mr-lg-0" href="#">
-            <x-heroicon-o-cube-transparent class="icon-brand mr-2"/> {{ config('app.name', 'Laravel') }}
+            <x-heroicon-o-cube-transparent class="icon-brand mr-2"/> {{ config('app.name', 'Laravel') }} - {{ __('Research portal') }}
         </a>
 
         <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -61,11 +61,31 @@
                     @csrf {{-- Form field protection --}}
                 </form>
 
-                <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <x-heroicon-o-arrows-right-left class="icon icon-navbar mr-1"/> {{ __('switch to kiosk') }}
-                    </a>
-                </li>
+                @if (auth()->user()->can('access-kiosk') || auth()->user()->can('access-research-portal'))
+                    <li class="nav-item dropdown">
+                        <a href="" class="nav-link dropdown-toggle" id="portalDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <x-heroicon-o-arrows-right-left class="icon icon-navbar mr-1"/> {{ __('switch portal') }}
+                        </a>
+
+                        <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="portalDropdown">
+                            <a class="dropdown-item" href="{{ route('kiosk.dashboard') }}">
+                                {{ __('Website') }}
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            @can('access-kiosk')
+                                <a class="dropdown-item" href="{{ route('kiosk.dashboard') }}">
+                                    {{ __('Kiosk portal') }}
+                                </a>
+                            @endcan
+
+                            <a class="dropdown-item" href="">
+                                {{ __('Research portal') }}
+                            </a>
+                        </div>
+                    </li>
+                @endif
 
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,7 +118,8 @@
         </ul>
     </nav>
 
-    @auth('web')
+
+    @auth
         <div class="nav-scroller bg-white shadow-sm">
             <nav class="nav nav-underline">
                 <a class="nav-link {{ active('/') }}" href="{{ url('/') }}">
@@ -135,6 +156,7 @@
             </nav>
         </div>
     @endauth
+
 
     <main role="main">
         @yield('content')
