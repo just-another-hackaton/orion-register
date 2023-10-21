@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['portal' => 'website'])
 
 @section ('content')
 @endsection

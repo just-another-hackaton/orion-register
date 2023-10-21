@@ -24,9 +24,14 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('access-kiosk', function (User $user): bool {
+        Gate::define('access-research-portal', function (User $user): bool {
             return $user->user_group === UserGroup::Researcher
                 || $user->user_group === UserGroup::Administrator
+                || $user->user_group === UserGroup::Webmaster;
+        });
+
+        Gate::define('access-kiosk', function (User $user): bool {
+            return $user->user_group === UserGroup::Administrator
                 || $user->user_group === UserGroup::Webmaster;
         });
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Responses;
+namespace App\Http\Responses;
 
 use App\Enums\Users\UserGroup;
 use Illuminate\Http\RedirectResponse;

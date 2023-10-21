@@ -26,7 +26,13 @@
 <body class="h-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand mr-auto mr-lg-0" href="#">
-            <x-heroicon-o-cube-transparent class="icon-brand mr-2"/> {{ config('app.name', 'Laravel') }} - {{ __('Research portal') }}
+            <x-heroicon-o-cube-transparent class="icon-brand mr-2"/> {{ config('app.name', 'Laravel') }}
+
+            @if ($portal === 'kiosk')
+                - {{ __('Kiosk') }}
+            @elseif ($portal === 'research')
+                - {{ __('Research portal') }}
+            @endif
         </a>
 
         <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
@@ -69,27 +75,29 @@
 
                         <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="portalDropdown">
                             <a class="dropdown-item" href="{{ route('kiosk.dashboard') }}">
-                                {{ __('Website') }}
+                                <x-heroicon-o-globe-europe-africa class="icon icon-subnav"/> {{ __('Website') }}
                             </a>
 
                             <div class="dropdown-divider"></div>
 
                             @can('access-kiosk')
                                 <a class="dropdown-item" href="{{ route('kiosk.dashboard') }}">
-                                    {{ __('Kiosk portal') }}
+                                    <x-heroicon-o-wrench-screwdriver class="icon icon-subnav"/> {{ __('Kiosk portal') }}
                                 </a>
                             @endcan
 
-                            <a class="dropdown-item" href="">
-                                {{ __('Research portal') }}
-                            </a>
+                            @can ('access-research-portal')
+                                <a class="dropdown-item" href="{{ route('research-portal.dashboard') }}">
+                                    <x-heroicon-o-document-magnifying-glass class="icon icon-subnav" /> {{ __('Research portal') }}
+                                </a>
+                            @endcan
                         </div>
                     </li>
                 @endif
 
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <x-heroicon-o-user-circle class="icon icon-navbar mr-1"/> {{ auth()->user()->name }}
+                        <x-heroicon-o-user-circle class="icon icon-navbar mr-2"/> {{ auth()->user()->name }}
                     </a>
 
                     <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="accountDropdown">
@@ -121,39 +129,9 @@
 
     @auth
         <div class="nav-scroller bg-white shadow-sm">
-            <nav class="nav nav-underline">
-                <a class="nav-link {{ active('/') }}" href="{{ url('/') }}">
-                    <x-heroicon-o-home class="icon icon-subnav" /> {{ __('Dashboard') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-users class="icon icon-subnav" /> {{ __('Casualties') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-users class="icon icon-subnav" /> {{ __('Squadrons') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-users class="icon icon-subnav" /> {{ __('Airforces') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-paper-airplane class="icon icon-subnav"/> {{ __('Airframes') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-circle-stack class="icon icon-subnav"/> {{ __('Incidents') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-list-bullet class="icon icon-subnav" /> {{ __('Memorials') }}
-                </a>
-
-                <a class="nav-link" href="">
-                    <x-heroicon-o-list-bullet class="icon icon-subnav" /> {{ __('Decorations') }}
-                </a>
-            </nav>
+            @includeWhen($portal === 'website', 'layouts.partials._website-subnav')
+            @includeWhen($portal === 'kiosk', 'layouts.partials._kiosk-subnav')
+            @includeWhen($portal === 'research', 'layouts.partials._research-portal-subnav')
         </div>
     @endauth
 
