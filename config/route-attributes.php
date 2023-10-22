@@ -13,7 +13,8 @@ return [
      * Optionally, you can specify group configuration by using key/values
      */
     'directories' => [
-        app_path('Http/Controllers'),
+        app_path('Http/Controllers/Dashboards'),
+        app_path('Http/Controllers/UserManagement'),
     ],
 
     /**
