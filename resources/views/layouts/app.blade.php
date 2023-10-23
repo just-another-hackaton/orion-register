@@ -137,6 +137,30 @@
 
     <main role="main">
         @yield('content')
+
+        <nav class="navbar fixed-bottom navbar-expand-sm bg-transparent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-decoration-none font-weight-bold text-muted" href="{{ route('welcome') }}">
+                        &copy; {{ config('app.name', 'Laravel') }}
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-decoration-none font-weight-bold text-muted" href="">
+                        {{ __('Privacy policy') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-decoration-none font-weight-bold text-muted" href="">
+                        {{ __('Terms of service') }}
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </main>
 
     @livewireScripts

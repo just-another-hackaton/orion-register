@@ -16,6 +16,10 @@
     </a>
 
     <a class="nav-link" href="">
+        <x-heroicon-o-paper-airplane class="icon icon-subnav"/> {{ __('Airfields') }}
+    </a>
+
+    <a class="nav-link" href="">
         <x-heroicon-o-paper-airplane class="icon icon-subnav"/> {{ __('Airframes') }}
     </a>
 
