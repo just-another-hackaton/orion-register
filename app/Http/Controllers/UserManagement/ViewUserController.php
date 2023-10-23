@@ -13,5 +13,6 @@ final readonly class ViewUserController
     #[Get(uri: 'kiosk/user-management/{user}', name: 'kiosk.user-management.view')]
     public function __invoke(User $user): Renderable
     {
+
     }
 }

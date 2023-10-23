@@ -2,6 +2,10 @@
     @include button-variant(rgb(139, 126, 200), darken(rgb(139, 126, 200), 10%));
 }
 
+.btn-reset {
+    @include button-variant(#fff, darken(#fff, 10%));
+}
+
 .btn-option {
     @include button-variant(#AF3029, darken(#AF3029, 10%));
 }

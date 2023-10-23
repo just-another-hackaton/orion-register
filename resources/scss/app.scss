@@ -61,6 +61,22 @@ body {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
+label {
+    margin-bottom: .25rem;
+}
+
+/// Vendor extension
+.breadcrumb {
+    padding: 0;
+    margin-bottom: -3px;;
+    background-color: transparent
+}
+
+.form-section-title {
+    font-weight: 400;
+    color: rgb(139, 126, 200);
+}
+
 .card-header-logins {
     background-color: #fef2f2;
     font-weight: bold;
