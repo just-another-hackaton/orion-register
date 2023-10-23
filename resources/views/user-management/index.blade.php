@@ -40,7 +40,7 @@
         @if ($users->total() > 0)
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
-                    <div class="tabler-responsive">
+                    <div class="table-responsive">
                         <table class="table-sm table mb-0">
                             <thead>
                                 <tr>
@@ -56,7 +56,14 @@
                                 @foreach ($users as $user)
                                     <tr>
                                         <td class="font-weight-bold text-muted">{{  $user->name }}</td>
-                                        <td></td>
+                                        <td>
+                                            @if ($user->isOnline())
+                                                <span class="badge label-online">
+                                                    {{ __('online') }}
+                                                </span>
+                                            @elseif(! $user->isOnline())
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="mailto:{{ $user->email }}">
                                                 {{ $user->email }}

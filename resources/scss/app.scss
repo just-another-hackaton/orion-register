@@ -56,9 +56,18 @@
 @import 'components/labels';
 
 
-html,
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
-    overflow-x: hidden; /* Prevent scroll on narrow devices */
+    margin-bottom: 60px; // Margin bottom by footer height
+}
+
+.color-brand {
+    font-weight: bolder !important;
+    color: #3AA99F;
 }
 
 label {
