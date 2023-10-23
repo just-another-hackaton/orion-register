@@ -45,25 +45,39 @@
             </div>
 
             <div class="offset-1 col-md-7">
-                <x-form id="createForm" action="" class="card card-body shadow-sm border-0">
+                <x-form id="createForm" action="{{ route('kiosk.user-management.store') }}" class="card card-body shadow-sm border-0">
                     <div class="form-row">
                         <div class="form-group col-5">
                             <label for="firstName">{{ __('First name') }} <span class="text-danger font-weight-bold">*</span></label>
-                            
-                            <input type="text" class="form-control @error('firstname') is-invalid @enderror" id="firstName" name="firstName" value="{{ old('firstName') }}">
-                            <x-error field="first_name" class="invalid-feedback font-weight-bold"/>
+
+                            <input type="text" class="form-control @error('firstname') is-invalid @enderror" id="firstName" name="firstname" value="{{ old('firstname') }}" autofocus>
+                            <x-error field="firstname" class="invalid-feedback font-weight-bold"/>
                         </div>
 
                         <div class="form-group col-7">
+                            <label for="lastName">{{ __('Last name') }} <span class="text-danger font-weight-bold">*</span></label>
 
+                            <input type="text" class="form-control @error('lastname') is-invalid @enderror" id="lastName" name="lastname" value="{{ old('lastname') }}">
+                            <x-error field="lastname" class="invalid-feedback font-weight-bold"/>
                         </div>
 
                         <div class="form-group col-6 mb-0">
+                            <label for="email">{{ __('E-mail address') }} <span class="text-danger font-weight-bold">*</span></label>
 
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}">
+                            <x-error field="email" class="invalid-feedback font-weight-bold"/>
                         </div>
 
                         <div class="form-group col-6 mb-0">
+                            <label for="userGroup">{{ __('User group') }} <span class="text-danger font-weight-bold">*</span></label>
 
+                            <select name="user_group" class="custom-select">
+                                @foreach ($userGroups as $userGroup)
+                                    <option value="{{ $userGroup->value }}" @selected(old('user_group') === $userGroup->value || $userGroup->value === 'normal user'))>
+                                        {{ $userGroup->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </x-form>
