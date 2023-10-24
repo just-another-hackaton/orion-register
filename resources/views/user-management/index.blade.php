@@ -62,6 +62,9 @@
                                                     {{ __('online') }}
                                                 </span>
                                             @elseif(! $user->isOnline())
+                                                <span class="badge label-offline">
+                                                    {{ __('offline') }}
+                                                </span>
                                             @endif
                                         </td>
                                         <td>
