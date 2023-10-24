@@ -27,6 +27,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'last_seen_at',
+        'last_login_ip',
         'password',
     ];
 
@@ -48,6 +50,7 @@ class User extends Authenticatable
     protected $casts = [
         'user_group' => UserGroup::class,
         'email_verified_at' => 'datetime',
+        'last_seen_at' => 'datetime',
         'password' => 'hashed',
     ];
 

@@ -77,7 +77,7 @@
                                                 {{ $user->user_group->getLabelText() }}
                                             </span>
                                         </td>
-                                        <td></td>
+                                        <td>{{ optional($user->last_seen_at)->diffForHumans() ?? '-' }}</td>
                                         <td>{{ $user->created_at->format('d/m/Y H:i:s') }}</td>
 
                                         <td>
