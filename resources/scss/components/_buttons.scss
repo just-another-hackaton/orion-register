@@ -6,6 +6,7 @@
     @include button-variant(#fff, darken(#fff, 10%));
 }
 
-.btn-option {
+.btn-option,
+.btn-action {
     @include button-variant(#AF3029, darken(#AF3029, 10%));
 }

@@ -4,17 +4,17 @@
     <div class="container-fluid my-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item fontw-eight-bold" aria-current="page">
+                <li class="breadcrumb-item font-weight-bold" aria-current="page">
                     <a href="{{ route('welcome') }}" class="text-muted">
                         <x-heroicon-o-home class="icon icon-brand"/>
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('kiosk.dashboard') }}" class="text-muted">
                         {{ __('Kiosk') }}
                     </a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
+                <li class="breadcrumb-item" aria-current="page">
                     <a href="{{ route('kiosk.user-management.index') }}" class="text-muted">
                         {{  __('User management') }}
                     </a>
