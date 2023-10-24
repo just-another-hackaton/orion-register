@@ -41,13 +41,49 @@
 ///
 @import 'layout/page-headers';
 
-html,
-body {
-    overflow-x: hidden; /* Prevent scroll on narrow devices */
+/// --------------------------------------------------------------------------------------------------------------------------
+/// Components
+/// --------------------------------------------------------------------------------------------------------------------------
+///
+/// For small components, there is the 'components/' folder.
+/// While 'layout/' is macro (defining the global wireframe), 'components/' is more focused on widgets.
+/// It contains all kind of specific modules like a slider, a loader, a widget, and basiclly anything those lines.
+/// There are usually a lot of files in components/ since the whole site/application should be mostly composed of tiny modules.
+///
+/// @see https://sass-guidelin.es/#components-folder
+///
+@import 'components/buttons';
+@import 'components/labels';
+
+
+html {
+    position: relative;
+    min-height: 100%;
 }
 
-.btn-submit {
-    @include button-variant(rgb(139, 126, 200), darken(rgb(139, 126, 200), 10%));
+body {
+    margin-bottom: 60px; // Margin bottom by footer height
+}
+
+.color-brand {
+    font-weight: bolder !important;
+    color: #3AA99F;
+}
+
+label {
+    margin-bottom: .25rem;
+}
+
+/// Vendor extension
+.breadcrumb {
+    padding: 0;
+    margin-bottom: -3px;;
+    background-color: transparent
+}
+
+.form-section-title {
+    font-weight: 400;
+    color: rgb(139, 126, 200);
 }
 
 .card-header-logins {

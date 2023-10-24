@@ -24,7 +24,7 @@ class BasePolicy
     /**
      * For displaying the edit view from the database entity & updating the database entity
      */
-    const Update = 'Update';
+    const Update = 'update';
 
     /**
      * For deleting the database entity.
