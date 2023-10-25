@@ -23,5 +23,6 @@ return [
     'middleware' => [
         'web',
         \App\Http\Middleware\Authenticate::class,
+        \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
     ]
 ];
