@@ -31,4 +31,22 @@ final class UserPolicy extends BasePolicy
     {
         return $user->isAdministrator() || $user->isWebmaster();
     }
+
+    public function deactivate(User $user, User $model): bool
+    {
+        if ($model->isBanned() || $user->is($model)) {
+            return false;
+        }
+
+        return $user->isAdministrator() || $user->isWebmaster();
+    }
+
+    public function activate(User $user, User $model): bool
+    {
+        if ($model->isNotBanned() || $user->is($model)) {
+            return false;
+        }
+
+        return $user->isAdministrator() || $user->isWebmaster();
+    }
 }

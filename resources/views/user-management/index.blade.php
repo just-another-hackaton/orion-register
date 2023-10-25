@@ -110,6 +110,8 @@
 
                 <div class="card-footer border-top-0">
                     <div class="row">
+                        {{-- @todo Implement pagination for the overview table --}}
+
                         <div class="col text-secondary text-right my-auto">
                             {{ $users->firstItem() ?? 0 }} to {{ $users->lastItem() ?? 0 }} from {{ $users->total() }} users
                         </div>
