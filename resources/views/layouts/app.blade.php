@@ -98,7 +98,7 @@
                         <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="accountDropdown">
                             <div class="dropdown-header">{{ __('Account management') }}</div>
 
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="{{ route('account.settings.information') }}">
                                 <x-heroicon-o-adjustments-vertical class="icon icon-subnav"/> {{ __('Settings') }}
                             </a>
 

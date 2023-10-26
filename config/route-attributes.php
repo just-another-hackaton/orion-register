@@ -15,6 +15,7 @@ return [
     'directories' => [
         app_path('Http/Controllers/Dashboards'),
         app_path('Http/Controllers/UserManagement'),
+        app_path('Http/Controllers/Account')
     ],
 
     /**
