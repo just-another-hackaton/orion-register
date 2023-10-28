@@ -9,11 +9,20 @@
 
                     <x-form action="{{ route('register') }}" class="card-body">
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('First name') }}</label>
 
                             <div class="col-md-6">
-                                <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                <x-error field="name" class="font-weight-bold invalid-feedback" role="alert"/>
+                                <input type="text" id="name" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ old('firstname') }}" required autofocus>
+                                <x-error field="firstname" class="font-weight-bold invalid-feedback" role="alert"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Last name') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" id="lastname" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{  old('lastname') }}" required>
+                                <x-error field="lastname" class="font-weight-bold invalid-feedback" role="alert"/>
                             </div>
                         </div>
 
