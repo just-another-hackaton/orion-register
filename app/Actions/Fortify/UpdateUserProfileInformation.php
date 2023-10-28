@@ -33,6 +33,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
+
+        $this->sendInformationAlert();
     }
 
     /**
@@ -50,5 +52,13 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ])->save();
 
         $user->sendEmailVerificationNotification();
+    }
+
+    private function sendInformationAlert(): void
+    {
+        session()->flash(
+            'profileInformationUpdated',
+            trans('The profile information has been successfully updated')
+        );
     }
 }

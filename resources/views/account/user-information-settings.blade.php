@@ -22,6 +22,11 @@
                         <x-heroicon-o-identification class="icon icon-subnav"/> {{  __('General account information') }}
                     </div>
                     <div class="card-body">
+                        @if (session()->has('profileInformationUpdated'))
+                            <div class="alert alert-success border-0" role="alert">
+                                {{ session()->get('profileInformationUpdated') }}
+                            </div>
+                        @endif
                         <div class="form-row">
                             <div class="form-group col-5">
                                 <label for="firstName">{{ __('First name') }} <span class="font-weight-bold text-danger">*</span></label>
