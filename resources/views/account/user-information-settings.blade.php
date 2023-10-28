@@ -32,7 +32,7 @@
 
                             <div class="form-group col-7">
                                 <label for="lastName">{{  __('Last name') }} <span class="font-weight-bold text-danger">*</span></label>
-                                <input type="text" id="lastName" name="lastName" class="form-control @error('lastname', 'updateProfileInformation') is-invalid @enderror" value="{{ old('lastname', $user->lastname) }}">
+                                <input type="text" id="lastName" name="lastname" class="form-control @error('lastname', 'updateProfileInformation') is-invalid @enderror" value="{{ old('lastname', $user->lastname) }}">
 
                                 <x-error field="lastname" bag="updateProfileInformation" class="invalid-feedback font-weight-bold"/>
                             </div>
