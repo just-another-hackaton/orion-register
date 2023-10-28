@@ -3,7 +3,7 @@
         <x-heroicon-o-identification class="icon icon-subnav"/> {{ __('account information') }}
     </a>
 
-    <a href="" class="list-group-item list-group-item-action">
+    <a href="{{ route('user-password.update') }}" class="{{ active('user-password.update') }} list-group-item list-group-item-action">
         <x-heroicon-o-shield-check class="icon icon-subnav"/> {{ __('Account security') }}
     </a>
 
