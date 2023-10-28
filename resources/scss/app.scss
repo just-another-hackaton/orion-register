@@ -56,6 +56,31 @@
 @import 'components/buttons';
 @import 'components/labels';
 
+.card-header-danger {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background-color: #fee2e2;
+    color: #dc2626;
+    font-weight: bold;
+    border-bottom: 0;
+}
+
+.nav-settings {
+    border-bottom: 1px solid darken($body-bg, 10%);
+
+    .nav-link {
+        color: #6c757d;
+    }
+
+    .nav-link.active,
+    .nav-link:hover {
+        color: #3AA99F;
+        border-bottom: 1px solid;
+        background-color: transparent;
+        border-collapse: collapse !important;
+        border-color: transparent transparent #3AA99F;
+    }
+}
 
 html {
     position: relative;

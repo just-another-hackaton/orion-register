@@ -29,6 +29,12 @@ final class UserPolicy extends BasePolicy
 
     public function delete(User $user, User $model): bool
     {
+        // The given userv is the same as the authenticated user.
+        // So he needs to be allowed to delete his own account.
+        if ($user->is($model)) {
+            return true;
+        }
+
         return $user->isAdministrator() || $user->isWebmaster();
     }
 }
