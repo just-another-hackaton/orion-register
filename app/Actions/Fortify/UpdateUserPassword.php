@@ -28,5 +28,15 @@ class UpdateUserPassword implements UpdatesUserPasswords
         $user->forceFill([
             'password' => Hash::make($input['password']),
         ])->save();
+
+        $this->sendInformationAlert();
+    }
+
+    private function sendInformationAlert(): void
+    {
+        session()->flash(
+            'profileSecurityUpdated',
+            trans('The pasdsword of your account has been seccessfully updated')
+        );
     }
 }

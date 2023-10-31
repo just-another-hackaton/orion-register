@@ -27,6 +27,7 @@
                                 {{ session()->get('profileInformationUpdated') }}
                             </div>
                         @endif
+
                         <div class="form-row">
                             <div class="form-group col-5">
                                 <label for="firstName">{{ __('First name') }} <span class="font-weight-bold text-danger">*</span></label>
