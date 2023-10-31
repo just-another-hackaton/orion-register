@@ -12,8 +12,10 @@ final class RegisterUser
 {
     public function handle(UserDataObject $userDataObject): User
     {
+        $expiresAt = now()->addDay();
+
         $user = DB::transaction(fn (): User => User::query()->create($userDataObject->toArray()));
-        // TODO: Send out user welcome notification.
+        $user->sendWelcomeNotification($expiresAt);
 
         return $user;
     }

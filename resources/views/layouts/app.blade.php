@@ -69,7 +69,7 @@
                             </a>
 
                             <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="portalDropdown">
-                                <a class="dropdown-item" href="{{ route('welcome') }}">
+                                <a class="dropdown-item" href="{{ route('welcome.dashboard') }}">
                                     <x-heroicon-o-globe-europe-africa class="icon icon-subnav"/> {{ __('Website') }}
                                 </a>
 

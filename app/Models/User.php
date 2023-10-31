@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\WelcomeNotification\ReceivesWelcomeNotification;
 
 class User extends Authenticatable
 {
@@ -19,6 +20,7 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use UserGroupMethods;
+    use ReceivesWelcomeNotification;
 
     /**
      * The attributes that are mass assignable.
