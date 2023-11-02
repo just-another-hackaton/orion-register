@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Dashboards\DashboardController;
-use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 use Spatie\WelcomeNotification\WelcomeController;
 
 /**
@@ -15,7 +15,7 @@ use Spatie\WelcomeNotification\WelcomeController;
  */
 final class AccountWelcomeController extends WelcomeController
 {
-    public function sendPasswordSavedResponse(): Response
+    public function sendPasswordSavedResponse(): RedirectResponse
     {
         return redirect()->action(DashboardController::class);
     }

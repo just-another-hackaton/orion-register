@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\View;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,12 +14,15 @@ use Illuminate\Support\Facades\View;
 use Spatie\WelcomeNotification\WelcomesNewUsers;
 use App\Http\Controllers\Account\AccountWelcomeController;
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
+
 Route::group(['middleware' => ['web', WelcomesNewUsers::class,]], function () {
     Route::get('welcome/{user}', [AccountWelcomeController::class, 'showWelcomeForm'])->name('welcome');
     Route::post('welcome/{user}', [AccountWelcomeController::class, 'savePassword']);
 });
 
-Route::get('/docs', function() {
+Route::middleware('web')->get('/docs', function() {
     View::addExtension('html', 'php'); // allows .html
     return view('docs.index'); // loads /public/docs/index.html
 });
