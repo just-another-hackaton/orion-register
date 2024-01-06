@@ -69,7 +69,7 @@
                             </a>
 
                             <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="portalDropdown">
-                                <a class="dropdown-item" href="{{ route('welcome') }}">
+                                <a class="dropdown-item" href="{{ route('welcome.dashboard') }}">
                                     <x-heroicon-o-globe-europe-africa class="icon icon-subnav"/> {{ __('Website') }}
                                 </a>
 
@@ -98,7 +98,7 @@
                         <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="accountDropdown">
                             <div class="dropdown-header">{{ __('Account management') }}</div>
 
-                            <a class="dropdown-item" href="">
+                            <a class="dropdown-item" href="{{ route('account.settings.information') }}">
                                 <x-heroicon-o-adjustments-vertical class="icon icon-subnav"/> {{ __('Settings') }}
                             </a>
 

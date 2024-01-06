@@ -54,5 +54,6 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::loginView('auth.login');
         Fortify::registerView('auth.register');
+        Fortify::confirmPasswordView('auth.passwords.confirm');
     }
 }

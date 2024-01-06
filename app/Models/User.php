@@ -6,11 +6,13 @@ namespace App\Models;
 
 use App\Enums\Users\UserGroup;
 use App\Models\Concerns\UserGroupMethods;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\WelcomeNotification\ReceivesWelcomeNotification;
 
 class User extends Authenticatable
 {
@@ -18,6 +20,7 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use UserGroupMethods;
+    use ReceivesWelcomeNotification;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +28,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
         'email',
         'last_seen_at',
         'last_login_ip',
@@ -41,6 +45,13 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function name(): Attribute
+    {
+        return Attribute::get(function (): string {
+            return ucfirst("{$this->firstname} {$this->lastname}");
+        });
+    }
 
     /**
      * The attributes that should be cast.

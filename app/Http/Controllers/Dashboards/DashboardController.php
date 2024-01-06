@@ -11,7 +11,7 @@ final readonly class DashboardController
 {
     #[Get(
         uri: '/',
-        name: 'welcome'
+        name: 'welcome.dashboard'
     )]
     public function __invoke(): Renderable
     {

@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item font-weight-bold" aria-current="page">
-                    <a href="{{ route('welcome') }}" class="text-muted">
+                    <a href="{{ route('welcome.dashboard') }}" class="text-muted">
                         <x-heroicon-o-home class="icon icon-brand"/>
                     </a>
                 </li>
