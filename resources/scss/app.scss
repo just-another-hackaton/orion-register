@@ -12,13 +12,14 @@
 ///
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import 'abstracts/variables';
+@import 'abstracts/flexoki-colors';
 
 /// --------------------------------------------------------------------------------------------------------------------------
 /// Vendors
 /// --------------------------------------------------------------------------------------------------------------------------
 ///
 /// Most projects will have a 'vendors' folder containing all the CSS files from external libraries and frameworks.
-/// Putting those aside in the same folder is a good way to say "Hey, tis is not from me, not my code, not my responsibility."
+/// Putting those aside in the same folder is a good way to say "Hey, this is not from me, not my code, not my responsibility."
 ///
 /// If you have to override a section of any vendor, I recommend you have an 8th folder colled 'vendor-extensions'
 /// in which you have files named exactly after the vendors they overwrite. For instance, 'vendor-extendsions/_bootstrap.scss'
